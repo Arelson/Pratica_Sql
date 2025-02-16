@@ -40,6 +40,35 @@ INNER JOIN guildManeger.Guilda G ON M.ID_guilda = G.ID_guilda
 GROUP BY G.Nome
 HAVING COUNT(M.ID_missao) > 3;
 
+--Listando a soma e media de ouro ganho nas missoes concluidas por cada aventureiro ou grupo
+SELECT 
+    am.id_avent,
+    am.id_grupo,
+    SUM(m.Recompensa) AS total_recompensa,
+    ROUND(AVG(m.Recompensa), 2) AS media_recompensa
+FROM guildManeger.AceitaMissao am
+JOIN guildManeger.Missao m ON am.id_missao = m.id_missao
+WHERE m.Status = 'Concluído'
+GROUP BY am.id_avent, am.id_grupo;
+
+--Cauculando o total de ouro gasto por um aventureiro
+CREATE or replace FUNCTION guildManeger.TotalGastoAventureiro(idAvent INT) 
+RETURNS NUMERIC AS $$
+DECLARE 
+    total_gasto NUMERIC := 0;
+BEGIN
+    SELECT COALESCE(SUM(i.Preco * c.Quantidade), 0)
+    INTO total_gasto
+    FROM guildManeger.Compra c
+    JOIN guildManeger.Item i ON c.ID_item = i.ID_item
+    WHERE c.ID_avent = idAvent;
+    
+    RETURN total_gasto;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT guildManeger.TotalGastoAventureiro(22);
+
 --Validando a aceitação de missoes
 CREATE OR REPLACE FUNCTION guildManeger.validar_aceita_missao()
 RETURNS TRIGGER AS $$
