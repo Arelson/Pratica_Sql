@@ -1,0 +1,32 @@
+INSERT INTO guildManeger.Missao (ID_missao, id_guilda, titulo, Descricao, Recompensa, Nivel_recomendado, Status) VALUES
+(10, 33, 'A Luta Contra os Espíritos', 'Derrote os espíritos das florestas próximas.', 300, 10, 'Ativo'),
+(15, 55, 'Defesa da Fortaleza', 'Proteja a fortaleza contra ataques de inimigos.', 500, 15, 'Ativo'),
+(20, 77, 'Busca pelo Elixir', 'Encontre o Elixir da Vida no deserto de Zilgor.', 450, 12, 'Em andamento'),
+(25, 99, 'Caça ao Dragão Sombrio', 'Mate o Dragão Sombrio que aterroriza a cidade.', 1000, 20, 'Ativo'),
+(30, 55, 'Exploração da Mina Abandonada', 'Explore a mina abandonada e colete minérios raros.', 350, 8, 'Concluído'),
+(35, 33, 'Proteção do Templo Sagrado', 'Proteja o templo contra invasores.', 700, 18, 'Em andamento'),
+(40, 99, 'Resgate dos Reféns', 'Resgate os reféns da guilda capturados por piratas.', 600, 14, 'Ativo'),
+(45, 77, 'Caça ao Urso Gigante', 'Caçar o urso gigante nas montanhas.', 800, 16, 'Concluído'),
+(50, 55, 'Fuga das Catacumbas', 'Ajude a guilda a escapar das catacumbas cheias de monstros.', 550, 13, 'Ativo'),
+(55, 99, 'Reconhecimento da Floresta Proibida', 'Explore a floresta proibida para mapear o território.', 200, 5, 'Em andamento'),
+(60, 33, 'Caça aos Bandidos', 'Derrote os bandidos que atacam as caravanas na estrada.', 400, 7, 'Ativo'),
+(65, 55, 'Infiltração na Guilda Rivais', 'Infiltre-se na guilda rival e colete informações.', 750, 25, 'Ativo'),
+(70, 77, 'Destruição do Portal Demoníaco', 'Destrua o portal demoníaco no vale da morte.', 1200, 30, 'Ativo'),
+(75, 77, 'A Vingança do Senhor das Sombras', 'Derrote o Senhor das Sombras que ameaça a cidade.', 900, 20, 'Em andamento'),
+(80, 99, 'Desafio da Arena', 'Participe do desafio da arena contra monstros poderosos.', 500, 10, 'Concluído');
+
+INSERT INTO guildManeger.aceitaMissao (id_grupo, id_lider, id_avent, id_missao, data) VALUES
+(1, 1, NULL, 10, '2022-05-14'),  
+(2, 4, NULL, 15, '2024-09-11'),  
+(NULL, NULL, 22, 25, '2026-11-10'), 
+(NULL, NULL, 23, 30, '2021-03-22'), 
+(1, 1, NULL, 35, '2020-06-17'), 
+(2, 4, NULL, 40, '2027-08-19'),  
+(NULL, NULL, 24, 45, '2023-04-07'), 
+(NULL, NULL, 25, 50, '2025-01-13'), 
+(NULL, NULL, 21, 55, '2029-12-03'), 
+(1, 1, NULL, 60, '2028-03-30'),  
+(2, 4, NULL, 65, '2030-07-21'),  
+(NULL, NULL, 22, 70, '2018-11-04'), 
+(NULL, NULL, 23, 75, '2022-02-15'), 
+(NULL, NULL, 24, 80, '2024-09-09'); 
