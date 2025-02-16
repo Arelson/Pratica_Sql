@@ -51,6 +51,42 @@ JOIN guildManeger.Missao m ON am.id_missao = m.id_missao
 WHERE m.Status = 'Concluído'
 GROUP BY am.id_avent, am.id_grupo;
 
+--Listando os itens comprados pela guilda
+SELECT 
+    G.Nome AS Nome_Guilda,
+    I.Nome AS Nome_Item,
+    I.Tipo AS Tipo_Item,
+    I.Preco AS Preço_Item,
+    c.Quantidade AS Quantidade_Recebida,  -- Quantidade recebida pela guilda
+    F.Nome AS Nome_Fornecedor
+FROM 
+    guildManeger.recebeitem RI
+JOIN 
+    guildManeger.Item I ON RI.ID_item = I.ID_item
+JOIN 
+    guildManeger.Guilda G ON RI.ID_guilda = G.ID_guilda
+JOIN 
+    guildManeger.Fornece Fo ON I.ID_item = Fo.ID_item
+JOIN 
+    guildManeger.Fornecedor F ON Fo.ID_fornec = F.ID_fornec
+join 
+	guildManeger.compra c on i.id_item = c.id_item
+WHERE 
+    G.ID_guilda = 55; 
+--listando os itens comprados pelo os aventureiros
+SELECT 
+    A.Nome AS Nome_Aventureiro,
+    C.Quantidade AS Quantidade_Comprada,
+    I.Nome AS Nome_Item,
+    I.Preco AS Valor_Item
+FROM 
+    guildManeger.Compra C
+JOIN 
+    guildManeger.Aventureiro A ON C.ID_avent = A.ID_avent
+JOIN 
+    guildManeger.Item I ON C.ID_item = I.ID_item
+WHERE 
+    A.ID_avent = 22;  
 --Cauculando o total de ouro gasto por um aventureiro
 CREATE or replace FUNCTION guildManeger.TotalGastoAventureiro(idAvent INT) 
 RETURNS NUMERIC AS $$
