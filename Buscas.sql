@@ -57,7 +57,7 @@ SELECT
     I.Nome AS Nome_Item,
     I.Tipo AS Tipo_Item,
     I.Preco AS Preço_Item,
-    c.Quantidade AS Quantidade_Recebida,  -- Quantidade recebida pela guilda
+    c.Quantidade AS Quantidade_Recebida,  
     F.Nome AS Nome_Fornecedor
 FROM 
     guildManeger.recebeitem RI
